@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Dodaj osobę</title>
+    <style type="text/css">
+        .container-fluid {
+            border: 1px #ccc solid;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .menu {
+            flex-direction: column;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="container-fluid">
+
+    <div><h1>HOMETASKER</h1></div>
+    <div class="menu">
+        <a href="/">Idź do strony głównej</a><br>
+        <a href="/addTask">Dodaj nowe zadanie</a><br>
+        <a href="/rank">Pokaż ranking</a><br>
+        <a href="/archive">Pokaż archiwum</a>
+
+    </div>
+
+
+</div>
+
+<form action="/addPerson" method="post" th:object="${newPerson}">
+    <h2>Podaj imię:
+        <input type="text" th:field="*{name}" placeholder="Imię" /> </h2>
+
+    <input type="submit" value="Dodaj" /> <br>
+</form>
+
+</body>
+</html>

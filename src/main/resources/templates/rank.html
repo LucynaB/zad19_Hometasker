@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"/>
+
+    <title>Ranking</title>
+    <style type="text/css">
+        .container-fluid {
+            border: 1px #ccc solid;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .menu {
+            flex-direction: column;
+        }
+    </style>
+</head>
+<body>
+<div class="container-fluid">
+
+    <div><h1>HOMETASKER - RANKING</h1></div>
+    <div class="menu">
+        <a href="/">Idź do strony głównej</a><br>
+        <a href="/addTask">Dodaj nowe zadanie</a><br>
+        <a href="/addPerson">Dodaj nową osobę</a><br>
+        <a href="/archive">Pokaż archiwum</a>
+
+    </div>
+
+
+</div>
+
+<table class="table table-striped">
+    <thead>
+    <th>Imię</th>
+    <th>Punkty</th>
+    </thead>
+    <tr th:each="person: ${#lists.sort(personList)}">
+
+        <td th:text="${person.name}"></td>
+        <td th:text="${person.points}" ></td>
+        <td> <a th:href="'/profil?name=' + ${person.name}">Pokaż profil</a></td>
+        <td> <a th:href="'/removePerson?name=' + ${person.name}">Usuń</a></td>
+
+    </tr>
+
+
+
+</table>
+
+</body>
+</html>
